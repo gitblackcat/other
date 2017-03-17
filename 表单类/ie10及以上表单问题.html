@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input::-ms-clear,input::-ms-reveal{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- ie10以下输入框和密码框出现小叉叉和小眼睛 本地 IE 是 IE10 以上 但是文档类型选择的是 IE10 以下 会导致这个样式属性失效 -->
+
+	<label for="input-text">输入框</label>
+	<input id="input-text" type="text">
+	<br>
+	<label for="input-password">密码框</label>
+	<input id="input-password" type="password">
+</body>
+</html>

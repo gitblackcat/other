@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			margin: 0 auto;
+			max-width: 800px;
+		}
+		img{
+			width: 100%;
+			vertical-align: middle;
+		}
+		.content{
+			max-width: 800px;
+			height: 500px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 关于图片上下之间的空隙，原理 inline和inline-block是不会完全忽略空隙的 因为字母y/g下面都会有长出来的一段 所以系统自动预留了一段空隙 -->
+	<!-- 解决方法 img{ display: block; }/img的父元素.banner{ font-size:0; }/img{ vertical-align:middle; } -->
+	<!-- 第三种是最好的解决方法，因为本身就是由vertical-align:baseline;引起的 -->
+	<div class="banner">
+		<img src="banner.jpg">
+	</div>
+	<div class="content"></div>
+</body>
+</html>

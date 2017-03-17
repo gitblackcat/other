@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.proving{
+			margin: 300px auto;
+			width: 400px;
+			background: yellow;
+		}
+		.proving-text,.proving-img,.proving-a{
+			vertical-align: middle;
+		}
+		.proving-text{
+			padding: 10px 0;
+			/*这里写padding上下来增加输入框的高度 是为了兼容ie8输入文字时候的上下垂直居中*/
+		}
+		.proving-img{
+			width: 48px;
+			height: 32px;
+			padding: 0 20px 0 30px;
+		}
+		.proving-a{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="proving">
+	    <input type="text" class="proving-text" name="proving-text" autocomplete="off">
+	    <img class="proving-img" src="szkp-03.jpg" alt="验证码">
+	    <a class="proving-a" href="#">看不清楚换一张</a> 
+	</div>
+
+</body>
+</html>
