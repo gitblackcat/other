@@ -1,5 +1,6 @@
+```javascript
 ;
-(function(win, doc, designWidth, rem2px) {
+(function(win, doc) {
     var docEl = doc.documentElement,
         metaEl = doc.querySelector('meta[name="viewport"]'),
         dpr = 0,
@@ -39,32 +40,29 @@
     }
 
     function refreshRem() {
-        var width = docEl.getBoundingClientRect().width,
-            height = docEl.getBoundingClientRect().height,
-            d = doc.createElement('div')
-
-        d.style.display = 'none'
-        d.style.width = '1rem'
-        docEl.firstElementChild.append(d)
-        var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'))
-        docEl.style.fontSize = width / (designWidth / rem2px) / defaultFontSize * 100 + '%'
-            // 1rem = htmlFontSize * defaultFontSize
+        var width = docEl.getBoundingClientRect().width
+        var rem = width / 10
+        docEl.style.fontSize = rem + 'px'
     }
 
     win.addEventListener('resize', function() {
         clearTimeout(tid)
         tid = setTimeout(refreshRem, 300)
-        window.location.reload()
     }, false)
 
     win.addEventListener('pageshow', function(e) {
         if (e.persisted) {
             clearTimeout(tid)
             tid = setTimeout(refreshRem, 300)
-            window.location.reload()
         }
     }, false)
 
     refreshRem()
 
-})(window, document, 750, 100)
+})(window, document)
+
+```
+
+```javascript
+(function(d,g){var a=g.documentElement,f=g.querySelector('meta[name="viewport"]'),h=0,b=0,c;if(!h&&!b){var i=d.devicePixelRatio;var j=i.toString().match(/^[1-9]\d*$/g);if(j){if(i>=3&&(!h||h>=3)){h=3}else{if(i>=2&&(!h||h>=2)){h=2}else{h=1}}}else{h=1}b=1/h}a.setAttribute("data-dpr",h);if(!f){f=g.createElement("meta");f.setAttribute("name","viewport");f.setAttribute("content","initial-scale="+b+",maximum-scale="+b+",minimum-scale="+b+",user-scalable=no");a.firstElementChild.appendChild(f)}else{f.setAttribute("name","viewport");f.setAttribute("content","initial-scale="+b+",maximum-scale="+b+",minimum-scale="+b+",user-scalable=no")}function e(){var k=a.getBoundingClientRect().width;var l=k/10;a.style.fontSize=l+"px"}d.addEventListener("resize",function(){clearTimeout(c);c=setTimeout(e,300)},false);d.addEventListener("pageshow",function(k){if(k.persisted){clearTimeout(c);c=setTimeout(e,300)}},false);e()})(window,document);
+```
