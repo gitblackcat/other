@@ -29,12 +29,12 @@
     if (!metaEl) {
         metaEl = doc.createElement('meta')
         metaEl.setAttribute('name', 'viewport')
-        metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no')
+        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no')
 
         docEl.firstElementChild.appendChild(metaEl)
     } else {
         metaEl.setAttribute('name', 'viewport')
-        metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no')
+        metaEl.setAttribute('content', 'initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no')
     }
 
     function refreshRem(designWidth, rem2px) {
