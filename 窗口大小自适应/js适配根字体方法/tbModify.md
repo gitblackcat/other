@@ -68,7 +68,6 @@
     refreshRem()
 
 })(window, document)
-
 ```
 
 ```javascript
