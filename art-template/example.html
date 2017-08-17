@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="example"></ul>
+    <hr>
+    <h1>参考</h1>
+    <a target="_blank" href="https://aui.github.io/art-template/">https://aui.github.io/art-template/</a>
+    <br>
+    <a target="_blank" href="https://github.com/aui/art-template">https://github.com/aui/art-template</a>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/art-template/lib/template-web.js"></script>
+    <script type="text/html" id="test">
+        {{each data}}
+        <li>
+            <h1>姓名: {{$value.name}}</h1> {{if $value.id === 1}}
+            <p>这个人的id为1</p>
+            {{else if $value.id === 2}}
+            <p>这个人的id为2</p>
+            {{else}}
+            <p>歪,妖妖灵吗?这里有人偷渡</p>
+            {{/if}}
+            <p>年龄: {{$value.age}}</p>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+    var data = [{
+        name: "yzd1",
+        id: 1,
+        age: 99
+    }, {
+        name: "yzd2",
+        id: 2,
+        age: 98
+    }, {
+        name: "???",
+        age: "???"
+    }]
+
+    // 这里需要注意,写入template('test', { data })里面的数据必须以{}传入
+    // 现在data是数组,所以我们需要自己添加{},把data包裹起来
+    $('.example').html(template('test', { data }))
+    </script>
+</body>
+
+</html>
