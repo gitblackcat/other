@@ -26,6 +26,9 @@
             <p>歪,妖妖灵吗?这里有人偷渡</p>
             {{/if}}
             <p>年龄: {{$value.age}}</p>
+            {{if typeof($value.age) === 'number'}}
+            <p>寿命限度: {{$value.age | getLife}}</p>
+            {{/if}}
         </li>
         {{/each}}
     </script>
@@ -42,6 +45,11 @@
         name: "???",
         age: "???"
     }]
+
+    // 过滤器
+    template.defaults.imports.getLife = function(num) {
+        return num * 10
+    }
 
     // 这里需要注意,写入template('test', { data })里面的数据必须以{}传入
     // 现在data是数组,所以我们需要自己添加{},把data包裹起来
