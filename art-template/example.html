@@ -18,7 +18,7 @@
     <script type="text/html" id="test">
         {{each data}}
         <li>
-            <h1>姓名: {{$value.name}}</h1> {{if $value.id === 1}}
+            <h1>{{$index}}姓名: {{$value.name}}</h1> {{if $value.id === 1}}
             <p>这个人的id为1</p>
             {{else if $value.id === 2}}
             <p>这个人的id为2</p>
