@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../bower_components/art-template/lib/template-web.js"></script>
     <script type="text/html" id="test">
-        {{each data}}
+        {{each list}}
         <li>
             <h1>{{$index}}姓名: {{$value.name}}</h1> {{if $value.id === 1}}
             <p>这个人的id为1</p>
@@ -55,7 +55,8 @@
 
     // 这里需要注意,写入template('test', { data })里面的数据必须以{}传入
     // 现在data是数组,所以我们需要自己添加{},把data包裹起来
-    $('.example').html(template('test', { data }))
+    $('.example').html(template('test', { list: data }))
+    // {{each list}} 里面的list 要和template传入对象的属性一致
     </script>
 </body>
 

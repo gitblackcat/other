@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="example"></ul>
+    <hr>
+    <h1>参考</h1>
+    <a target="_blank" href="https://aui.github.io/art-template/">https://aui.github.io/art-template/</a>
+    <br>
+    <a target="_blank" href="https://github.com/aui/art-template">https://github.com/aui/art-template</a>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/art-template/lib/template-web.js"></script>
+    <script id="test" type="text/html">
+        {{each list}}
+        <li>
+            <a target="_blank" href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd={{$value}}&rsv_pq=8e18caf400006cea&rsv_t=28baSxC1ffjCZ0D%2BpzJ8OqZ0ZJvUgN0ezWED9vWL4ggP0UuFyz89BEnIrHM&rqlang=cn&rsv_enter=1&rsv_sug3=6&rsv_sug1=7&rsv_sug7=100">{{$value}}</a>
+        </li>
+        {{/each}}
+    </script>
+    <script>
+    var list = ['一拳超人', '小林家的龙女仆', '王者荣耀']
+
+    // {{each data}} 里面的data 要和template传入对象的属性一致
+
+    $('.example').html(template('test', { list }))
+    </script>
+</body>
+
+</html>
