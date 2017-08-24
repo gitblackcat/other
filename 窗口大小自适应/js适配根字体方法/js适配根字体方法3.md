@@ -119,5 +119,5 @@
 })(window, window['lib'] || (window['lib'] = {}));
 ```
 
-###原链接
+### 原链接
 - [https://github.com/amfe/lib-flexible](https://github.com/amfe/lib-flexible)
