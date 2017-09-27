@@ -138,3 +138,143 @@
 [https://github.com/ustbhuangyi/better-scroll](https://github.com/ustbhuangyi/better-scroll)
 
 [https://github.com/DDFE/DDFE-blog](https://github.com/DDFE/DDFE-blog)
+
+#### better-scroll模拟横向滚动需要注意的地方
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Document</title>
+    <script>
+    (function flexible(window, document) {
+        var docEl = document.documentElement
+        var dpr = window.devicePixelRatio || 1
+
+        // adjust body font size
+        function setBodyFontSize() {
+            if (document.body) {
+                document.body.style.fontSize = (12 * dpr) + 'px'
+            } else {
+                document.addEventListener('DOMContentLoaded', setBodyFontSize)
+            }
+        }
+        setBodyFontSize();
+
+        // set 1rem = viewWidth / 10
+        function setRemUnit() {
+            var rem = docEl.clientWidth / 7.5
+            docEl.style.fontSize = rem + 'px'
+        }
+
+        setRemUnit()
+
+        // reset rem unit on page resize
+        window.addEventListener('resize', setRemUnit)
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) {
+                setRemUnit()
+            }
+        })
+
+        // detect 0.5px supports
+        if (dpr >= 2) {
+            var fakeBody = document.createElement('body')
+            var testElement = document.createElement('div')
+            testElement.style.border = '.5px solid transparent'
+            fakeBody.appendChild(testElement)
+            docEl.appendChild(fakeBody)
+            if (testElement.offsetHeight === 1) {
+                docEl.classList.add('hairlines')
+            }
+            docEl.removeChild(fakeBody)
+        }
+    }(window, document))
+    </script>
+    <style>
+    html,
+    body,
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .wrap {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 5rem;
+        overflow: hidden;
+    }
+
+    li {
+        float: left;
+        width: 2.336rem;
+        height: 5rem;
+    }
+
+    li div {
+        width: 1.5rem;
+        height: 5rem;
+        background-color: #f00;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="bs.min.js"></script>
+    <script>
+    var lis = document.querySelectorAll('li'),
+        w = 0
+    for (var i = 0; i < lis.length; i++) {
+        w += lis[i].getBoundingClientRect().width
+    }
+
+    document.querySelector('ul').style.width = w + 'px' 
+    //注意这里必须是px为最后结算单位,不能用其他的
+
+    var scroll = new BScroll(document.querySelector('.wrap'), {
+        scrollX: true
+    })
+    </script>
+</body>
+
+</html>
+```
