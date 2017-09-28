@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .test1 {
+        position: relative;
+        width: 100px;
+        height: 40px;
+        background-color: red;
+        text-align: center;
+        line-height: 40px;
+        margin: 0 auto;
+    }
+
+    .test1:before,
+    .test1:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+    }
+
+    .test1:before {
+        left: -24px;
+        border-right-color: red;
+    }
+
+    .test1:after {
+        right: -24px;
+        border-left-color: red;
+    }
+
+    .test2 {
+        margin: 50px auto 0;
+        width: 0;
+        height: 0;
+        border-top: 30px solid green;
+        border-bottom: 30px solid green;
+        border-left: 10px solid red;
+        border-right: 10px solid red;
+    }
+
+    .box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 56px;
+        width: 500px;
+        margin: 50px auto 0;
+    }
+
+    .box:before,
+    .box:after {
+        content: "";
+        height: 1px;
+        background-color: red;
+        flex: 1;
+    }
+
+    .content {
+        position: relative;
+        padding: 0 50px;
+        height: 56px;
+        background-color: red;
+        text-align: center;
+        line-height: 56px;
+        color: #fff;
+        font-size: 16px;
+        margin: 0 18px;
+    }
+
+    .content:before,
+    .content:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 28px solid transparent;
+        border-bottom: 28px solid transparent;
+    }
+
+    .content:before {
+        left: -24px;
+        border-right-color: red;
+    }
+
+    .content:after {
+        right: -24px;
+        border-left-color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="test1">主办单位</div>
+    <div class="test2"></div>
+    <div class="box">
+        <div class="content">主办单位</div>
+    </div>
+</body>
+
+</html>
