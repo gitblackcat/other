@@ -12,7 +12,7 @@
 
 上述命令中的`https`地址就是源项目的地址
 
-- 将本地的修改提交'git add .',`git commit -m 'xxx'`
+- 将本地的修改提交`git add .`,`git commit -m 'xxx'`
 
 - `git pull upstream branchName`
 
